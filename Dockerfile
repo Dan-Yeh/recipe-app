@@ -5,7 +5,13 @@ LABEL maintainer="Dan Yeh"
 ENV PYTHONUNBUFFERED 1
 
 COPY ./requirements.txt /requirements.txt
+# no cache minimize dependencies
+RUN apk add --update --no-cache postgresql-client
+# virtual for easy remove
+RUN apk add --update --no-cache --virtual .tmp-build-deps \
+    gcc libc-dev linux-headers postgresql-dev
 RUN pip install -r /requirements.txt
+RUN apk del .tmp-build-deps
 
 RUN mkdir /app
 WORKDIR /app

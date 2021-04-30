@@ -11,7 +11,7 @@ class UserManager(BaseUserManager):
             raise ValueError('Users must have an email')
         user = self.model(email=self.normalize_email(email), **extra_fileds)
         user.set_password(password)
-        # using for saving in multipule database(not here)
+        # using for saving in multiple database(not here)
         user.save(using=self._db)
 
         return user
