@@ -126,5 +126,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+# 127.0.0.1:8000/static/
+# 127.0.0.1:8000/media/
+
+STATIC_ROOT = '/vol/web/static'
+MEDIA_ROOT = '/vol/web/media'
 
 AUTH_USER_MODEL = 'core.User'
